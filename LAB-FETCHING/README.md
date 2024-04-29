@@ -54,9 +54,9 @@
 
 El paquete es bastante liviano (~7 kB comprimidos con gzip) y se creó desde cero teniendo en cuenta las aplicaciones universales: puedes usarlo dondequiera que se esté renderizando React, lo que significa que funciona perfectamente con React (web) y React Native.
  
-   ***En este read me veremos como trabajar con js  luego con ts expliacndo los cambios que se hace en ambos casos***
+   ***En este read me veremos como trabajar con jsx luego con tsx expliacndo los cambios que se hace en ambos casos***
 
-   --Iniciando con el getdata.js
+   --Iniciando con el getdata.jsx
 ```js
 ( async () => {
 
@@ -97,7 +97,7 @@ const randomProductId = getRandomInt(1, 101);
     *    Si la promesa se rechaza, la expresión await arroja el valor rechazado.
     *    El uso de await permite desenrollar promesas y simplificar el manejo de código asíncrono.
   
- ***Ahora veremos como se trataba esa funcion con ts***
+ ***Ahora veremos como se trataba esa funcion con tsx***
 ```ts
 async function fetchData() {
   function getRandomInt(min: number, max: number): number {
@@ -118,8 +118,15 @@ async function fetchData() {
 fetchData();
 
 ```
-Practicamente podemos ver que el codigo realiza lo mismo que el anterior pero al ser codigo typeScript este requiere que se adapapte a su propioo lenguaje.
+Practicamente podemos ver que el codigo realiza lo mismo que el anterior pero al ser codigo typeScript este requiere que se adapte a su propio lenguaje.
+ 
+ ***En que se diferencian***
 
+Ambos códigos logran el mismo objetivo: realizar una solicitud a una API y obtener datos.
+El primer código utiliza una función anónima, mientras que el segundo utiliza una función nombrada.
+El uso de async/await hace que el código sea más legible y fácil de entender.
+
+   1. Ahora analizaremos para el componente App
 ```js
 import './App.css'
 import './async/services/getData'
@@ -150,7 +157,14 @@ export default App
     * Renderiza un encabezado <h2> con el texto LAB DATA - FETCHING.
     * Luego, renderiza el componente Card.
   
-***Ahora veremos  los cambios que se realizan para ts***
+
+***Este codigo se diferencia por:***
+
+Utiliza una función anónima llamada App.
+Renderiza el componente Card dentro de la función.
+El componente Card se encuentra fuera de la función anónima.
+  
+***Ahora veremos  los cambios que se realizan para tsx***
 
 ```ts
 import React from 'react';
@@ -170,6 +184,13 @@ function App(): JSX.Element {
 export default App;
 
 ```
+ ***En cambio este codigo:***
+
+Define una función nombrada llamada App.
+Renderiza el componente Card dentro de la función nombrada.
+El componente Card se encuentra dentro de la función nombrada.
+
+
 ***Bien ahora trabajaremos  en el componente Card de igual amanera que los anteriores casos***
 
 ```js
@@ -206,7 +227,7 @@ export const  Card = ( ) => {
     * Cuando la respuesta se completa, se actualiza el estado con los datos obtenidos.
     * Renderiza un contenedor con los detalles del producto, como el título, la descripción y el precio.
 
-***Ahora veremos el codigo en ts y las modifocaciones que se realizan en este lenguaje***
+***Ahora veremos el codigo del componente Card tsx y las modifocaciones que se realizan en este lenguaje***
 ```ts
 import React, { useEffect, useState } from "react";
 
@@ -236,7 +257,8 @@ export const Card: React.FC = () => {
   );
 };
 ```
-Podemos ver que en todos los casos se realiza modificaciones de acuerdo al lenguaje que se esta empleando para la implementacion de algun proyecto 
+En resumen, ambos fragmentos de código logran lo mismo: obtienen datos de productos y muestran los detalles en un componente llamado Card. La diferencia radica en cómo se definen las propiedades del producto y cómo se tipifican utilizando la interfaz en el segundo fragmento de código.
+
 
 
 ##  Impotancia
